@@ -1,13 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Text, View } from 'react-native';
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
+import { MainTab } from '../tabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +10,7 @@ export const RootStack = ({}) => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="MainTab" component={MainTab} />
     </Stack.Navigator>
   );
 };
