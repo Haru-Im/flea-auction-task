@@ -1,1 +1,1 @@
-export * from './market.screen';
+export * from './market.tab';

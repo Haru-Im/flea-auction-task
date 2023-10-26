@@ -1,7 +1,11 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MainTab } from '../tabs';
 
-const Stack = createNativeStackNavigator();
+export type IRootStackParamList = {
+  MainTab: undefined;
+};
+
+const Stack = createNativeStackNavigator<IRootStackParamList>();
 
 export const RootStack = ({}) => {
   return (
