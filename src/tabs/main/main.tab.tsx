@@ -1,15 +1,19 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { memo } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Text } from 'react-native';
 import {
   ArticleScreen,
   HomeScreen,
+  IArticleScreenParamList,
+  IHomeScreenParamList,
+  IMarketTabParamList,
+  IMyPageScreenParamList,
   IRootStackParamList,
   MarketTab,
   MyPageScreen,
 } from '../../screens';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RouteProp } from '@react-navigation/native';
+import { NavigatorScreenParams, RouteProp } from '@react-navigation/native';
 
 export type IMainTabNavigationProp = NativeStackNavigationProp<
   IRootStackParamList,
@@ -18,16 +22,16 @@ export type IMainTabNavigationProp = NativeStackNavigationProp<
 >;
 export type IMainTabRouteProp = RouteProp<IRootStackParamList, 'MainTab'>;
 
-type IMainTabProps = {
+export type IMainTabProps = {
   navigation: IMainTabNavigationProp;
   route: IMainTabRouteProp;
 };
 
 export type IMainTabParamsList = {
-  HomeScreen: { test: string };
-  MarketTab: undefined;
-  ArticleScreen: undefined;
-  MyPageScreen: undefined;
+  HomeScreen: NavigatorScreenParams<IHomeScreenParamList>;
+  MarketTab: NavigatorScreenParams<IMarketTabParamList>;
+  ArticleScreen: NavigatorScreenParams<IArticleScreenParamList>;
+  MyPageScreen: NavigatorScreenParams<IMyPageScreenParamList>;
 };
 
 const Tab = createBottomTabNavigator<IMainTabParamsList>();
@@ -54,8 +58,4 @@ export const MainTab = memo<IMainTabProps>(({ navigation, route }) => {
       <Tab.Screen options={{ title: 'MYPAGE' }} name="MyPageScreen" component={MyPageScreen} />
     </Tab.Navigator>
   );
-});
-
-const styles = StyleSheet.create({
-  container: {},
 });

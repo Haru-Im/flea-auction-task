@@ -3,14 +3,14 @@ import { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import { FinishedScreen, InprogressScreen, ScheduledScreen } from './screens';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { IMainTabParamsList } from '../../tabs';
-import { RouteProp } from '@react-navigation/native';
+import { IMainTabNavigationProp, IMainTabParamsList } from '../../tabs';
+import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 
-export type IMarketTabNavigationProp = NativeStackNavigationProp<
-  IMainTabParamsList,
-  'MarketTab',
-  undefined
+export type IMarketTabNavigationProp = CompositeNavigationProp<
+  IMainTabNavigationProp,
+  NativeStackNavigationProp<IMainTabParamsList, 'MarketTab', undefined>
 >;
+
 export type IMarketTabRouteProp = RouteProp<IMainTabParamsList, 'MarketTab'>;
 
 type IMarketTabProps = {
@@ -26,7 +26,7 @@ export type IMarketTabParamList = {
 
 const Tab = createMaterialTopTabNavigator<IMarketTabParamList>();
 
-export const MarketTab = memo<IMarketTabProps>(({}) => {
+export const MarketTab = memo<IMarketTabProps>(({ navigation }) => {
   return (
     <Tab.Navigator>
       <Tab.Screen

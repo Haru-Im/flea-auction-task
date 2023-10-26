@@ -4,6 +4,8 @@ import { View, StyleSheet, Text } from 'react-native';
 import { IMainTabParamsList } from '../../tabs';
 import { RouteProp } from '@react-navigation/native';
 
+export type IArticleScreenParamList = {};
+
 export type IArticleScreenNavigationProp = NativeStackNavigationProp<
   IMainTabParamsList,
   'ArticleScreen',

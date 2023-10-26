@@ -16,7 +16,7 @@ type IInprogressScreenProps = {
   route: IInprogressScreenRouteProp;
 };
 
-export const InprogressScreen = memo<IInprogressScreenProps>(({}) => {
+export const InprogressScreen = memo<IInprogressScreenProps>(({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text>inprogress</Text>
