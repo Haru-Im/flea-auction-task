@@ -23,7 +23,8 @@
     "react-native-screens": "~3.22.0",
     "react-native-sse": "1.2.0",
     "react-native-tab-view": "3.5.2",
-    "recoil": "0.7.7"
+    "recoil": "0.7.7",
+    "rooks": "7.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

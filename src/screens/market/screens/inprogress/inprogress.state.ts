@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+import { IArtPiecesType } from './inprogress.type';
 
 const initialArtPieces = Array.from({ length: 43 }, (_, i) => {
   return {
@@ -6,11 +7,6 @@ const initialArtPieces = Array.from({ length: 43 }, (_, i) => {
     viewCount: null,
   };
 });
-
-export type IArtPiecesType = {
-  auctionId: number;
-  viewCount: null | number;
-}[];
 
 export const $artPieces = atom<IArtPiecesType>({
   key: 'artPieces',
