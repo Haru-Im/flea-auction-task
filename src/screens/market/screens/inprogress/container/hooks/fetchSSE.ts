@@ -1,46 +1,50 @@
 import EventSource from 'react-native-sse';
 import { useSetRecoilState } from 'recoil';
 import { $artPieces } from '../../inprogress.state';
+import { useEffectOnceWhen } from 'rooks';
 
 type MyCustomEvents = 'sse.auction_viewed';
 
 export const useFetchSSE = () => {
   const setArtPieces = useSetRecoilState($artPieces);
-  const SSE_URL = process.env.EXPO_PUBLIC_SSE_AUCTION_VIEWED_URL;
-  if (!SSE_URL) {
-    throw new Error('SSE_URL is undefined.');
-  }
 
-  const eventSource = new EventSource<MyCustomEvents>(SSE_URL);
+  useEffectOnceWhen(() => {
+    const SSE_URL = process.env.EXPO_PUBLIC_SSE_AUCTION_VIEWED_URL;
+    if (!SSE_URL) {
+      throw new Error('SSE_URL is undefined.');
+    }
 
-  eventSource.addEventListener('open', (event) => {
-    console.log('Open SSE connection.');
-  });
+    const eventSource = new EventSource<MyCustomEvents>(SSE_URL);
 
-  eventSource.addEventListener('sse.auction_viewed', (event) => {
-    const { auctionId, viewCount } = JSON.parse(event.data as string);
-    setArtPieces((prev) => {
-      return prev.map((e) => {
-        if (e.auctionId === auctionId) {
-          return {
-            ...e,
-            viewCount,
-          };
-        }
-        return e;
+    eventSource.addEventListener('open', (event) => {
+      console.log('Open SSE connection.');
+    });
+
+    eventSource.addEventListener('sse.auction_viewed', (event) => {
+      const { auctionId, viewCount } = JSON.parse(event.data as string);
+      setArtPieces((prev) => {
+        return prev.map((e) => {
+          if (e.auctionId === auctionId) {
+            return {
+              ...e,
+              viewCount,
+            };
+          }
+          return e;
+        });
       });
     });
-  });
 
-  eventSource.addEventListener('error', (event) => {
-    if (event.type === 'error') {
-      console.error('Connection error:', event.message);
-    } else if (event.type === 'exception') {
-      console.error('Error:', event.message, event.error);
-    }
-  });
+    eventSource.addEventListener('error', (event) => {
+      if (event.type === 'error') {
+        console.error('Connection error:', event.message);
+      } else if (event.type === 'exception') {
+        console.error('Error:', event.message, event.error);
+      }
+    });
 
-  eventSource.addEventListener('close', (event) => {
-    console.log('Close SSE connection.');
+    eventSource.addEventListener('close', (event) => {
+      console.log('Close SSE connection.');
+    });
   });
 };

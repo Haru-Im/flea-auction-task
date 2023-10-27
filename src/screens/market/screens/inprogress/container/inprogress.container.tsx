@@ -5,8 +5,15 @@ import { useFetchSSE, useRefresh } from './hooks';
 type IInprogressContainerProps = {};
 
 export const InprogressContainer = memo<IInprogressContainerProps>(({}) => {
-  const { onRefresh, refreshing, firstShuffledArtPieces, secondShuffledArtPieces } = useRefresh();
   useFetchSSE();
+  const {
+    onRefresh,
+    refreshing,
+    firstShuffledArtPieces,
+    secondShuffledArtPieces,
+    firstScrollViewRef,
+    secondScrollViewRef,
+  } = useRefresh();
 
   return (
     <InprogressView
@@ -14,6 +21,8 @@ export const InprogressContainer = memo<IInprogressContainerProps>(({}) => {
       refreshing={refreshing}
       firstShuffledArtPieces={firstShuffledArtPieces}
       secondShuffledArtPieces={secondShuffledArtPieces}
+      firstScrollViewRef={firstScrollViewRef}
+      secondScrollViewRef={secondScrollViewRef}
     />
   );
 });
