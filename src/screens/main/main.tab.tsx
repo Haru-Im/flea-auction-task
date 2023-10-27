@@ -1,19 +1,14 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { memo } from 'react';
 import { Text } from 'react-native';
-import {
-  ArticleScreen,
-  HomeScreen,
-  IArticleScreenParamList,
-  IHomeScreenParamList,
-  IMarketTabParamList,
-  IMyPageScreenParamList,
-  IRootStackParamList,
-  MarketTab,
-  MyPageScreen,
-} from '../../screens';
+
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { NavigatorScreenParams, RouteProp } from '@react-navigation/native';
+import { IArticleScreenParamList, ArticleScreen } from '../article';
+import { IHomeScreenParamList, HomeScreen } from '../home';
+import { IMarketTabParamList, MarketTab } from '../market';
+import { IMyPageScreenParamList, MyPageScreen } from '../mypage';
+import { IRootStackParamList } from '../root.stack';
 
 export type IMainTabNavigationProp = NativeStackNavigationProp<
   IRootStackParamList,

@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { IMainTabParamsList, MainTab } from '../tabs';
+
 import { NavigatorScreenParams } from '@react-navigation/native';
+import { IMainTabParamsList, MainTab } from '.';
 
 export type IRootStackParamList = {
   MainTab: NavigatorScreenParams<IMainTabParamsList>;

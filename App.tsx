@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { RootStack } from './src/screens';
+
 import { SafeAreaView } from 'react-native';
+import { RootStack } from './src/screens/root.stack';
 
 export default function App() {
   return (

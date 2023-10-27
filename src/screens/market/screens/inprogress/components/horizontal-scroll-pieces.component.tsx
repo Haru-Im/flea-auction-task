@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { View, StyleSheet, ScrollView, Text } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 import { IArtPiecesType } from '../inprogress.type';
 
 type IHorizontalScrollPiecesComponentProps = {
@@ -9,11 +9,7 @@ type IHorizontalScrollPiecesComponentProps = {
 export const HorizontalScrollPiecesComponent = memo<IHorizontalScrollPiecesComponentProps>(
   ({ piecesArray = [] }) => {
     return (
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.contentContainer}
-      >
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {piecesArray.map((e, i) => {
           return (
             <View key={i} style={{ padding: 10, borderWidth: 1, aspectRatio: 1, width: 80 }}>
@@ -26,7 +22,3 @@ export const HorizontalScrollPiecesComponent = memo<IHorizontalScrollPiecesCompo
     );
   },
 );
-
-const styles = StyleSheet.create({
-  contentContainer: { flex: 1 },
-});
