@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { IMarketTabParamList } from '../../market.tab';
 import { RouteProp } from '@react-navigation/native';
 import { InprogressContainer } from './container';
+import { RecoilProvider } from '../../../../provider';
 
 export type IInprogressScreenNavigationProp = NativeStackNavigationProp<
   IMarketTabParamList,
@@ -17,5 +18,9 @@ type IInprogressScreenProps = {
 };
 
 export const InprogressScreen = memo<IInprogressScreenProps>(({ navigation }) => {
-  return <InprogressContainer />;
+  return (
+    <RecoilProvider>
+      <InprogressContainer />
+    </RecoilProvider>
+  );
 });

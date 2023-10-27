@@ -1,25 +1,14 @@
-import { memo, useCallback, useState } from 'react';
+import { memo } from 'react';
 import { View, StyleSheet, Text, ScrollView, RefreshControl } from 'react-native';
+import { IArtPiecesType } from '../inprogress.state';
 
-type IInprogressViewProps = {};
+type IInprogressViewProps = {
+  onRefresh: () => void;
+  refreshing: boolean;
+  artPieces: IArtPiecesType;
+};
 
-const piecesArray = Array.from({ length: 43 }, (_, i) => {
-  return {
-    auctionId: i + 3965,
-    viewCount: null,
-  };
-});
-
-export const InprogressView = memo<IInprogressViewProps>(({}) => {
-  const [refreshing, setRefreshing] = useState<boolean>(false);
-
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 1000);
-  }, []);
-
+export const InprogressView = memo<IInprogressViewProps>(({ onRefresh, refreshing, artPieces }) => {
   return (
     <ScrollView
       contentContainerStyle={styles.contentContainer}
@@ -30,7 +19,7 @@ export const InprogressView = memo<IInprogressViewProps>(({}) => {
         showsHorizontalScrollIndicator={false}
         style={{ flex: 1, backgroundColor: 'green' }}
       >
-        {piecesArray.map((e, i) => {
+        {artPieces.map((e, i) => {
           return (
             <View key={i} style={{ padding: 10, borderWidth: 1, aspectRatio: 1, width: 80 }}>
               <Text>{e.auctionId}</Text>
@@ -39,7 +28,20 @@ export const InprogressView = memo<IInprogressViewProps>(({}) => {
           );
         })}
       </ScrollView>
-      <View style={{ flex: 1, backgroundColor: 'pink' }}></View>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ flex: 1, backgroundColor: 'pink' }}
+      >
+        {artPieces.map((e, i) => {
+          return (
+            <View key={i} style={{ padding: 10, borderWidth: 1, aspectRatio: 1, width: 80 }}>
+              <Text>{e.auctionId}</Text>
+              <Text>{e.viewCount ?? 'n/a'}</Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     </ScrollView>
   );
 });
