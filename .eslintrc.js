@@ -7,6 +7,7 @@ module.exports = {
     'no-undef': 'off',
     'no-empty-pattern': 'off',
     '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
     'prettier/prettier': [
       'error',
       {
