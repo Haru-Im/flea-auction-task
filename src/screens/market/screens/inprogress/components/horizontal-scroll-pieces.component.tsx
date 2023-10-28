@@ -2,8 +2,6 @@ import React, { RefObject, memo } from 'react';
 import { View, ScrollView, Text, StyleSheet, Dimensions } from 'react-native';
 import { IArtPiecesType } from '../inprogress.type';
 import Animated from 'react-native-reanimated';
-
-import {} from 'react-native-responsive-fontsize';
 import { ProfileSvgComponent, scaleSize } from '../../../../../shared';
 
 type IHorizontalScrollPiecesComponentProps = {

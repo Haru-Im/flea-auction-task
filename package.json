@@ -34,7 +34,8 @@
     "react-native-toast-notifications": "3.4.0",
     "recoil": "0.7.7",
     "rooks": "7.14.1",
-    "typescript": "^5.1.3"
+    "typescript": "^5.1.3",
+    "expo-haptics": "~12.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

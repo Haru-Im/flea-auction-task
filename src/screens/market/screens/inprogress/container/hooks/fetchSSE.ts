@@ -4,6 +4,7 @@ import { $artPieces } from '../../inprogress.state';
 import { useDidUpdate, useEffectOnceWhen } from 'rooks';
 import { useState } from 'react';
 import { useToast } from 'react-native-toast-notifications';
+import * as Haptics from 'expo-haptics';
 
 type MyCustomEvents = 'sse.auction_viewed';
 
@@ -37,6 +38,8 @@ export const useFetchSSE = () => {
     eventSource.addEventListener('sse.auction_viewed', (event) => {
       const { auctionId, viewCount } = JSON.parse(event.data as string);
       console.log(auctionId, viewCount);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+
       setCurrentData({
         auctionId,
         viewCount,
