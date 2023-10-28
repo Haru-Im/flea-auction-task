@@ -1,11 +1,16 @@
 import { atom, selector } from 'recoil';
 import { IArtPiecesType } from './inprogress.type';
 import shuffle from 'lodash/shuffle';
+import { MOCK_DATA } from './inprogress.const';
 
 const initialArtPieces = Array.from({ length: 43 }, (_, i) => {
+  const { author, title, price } = MOCK_DATA[i];
   return {
     auctionId: i + 3965,
     viewCount: null,
+    author,
+    title,
+    price,
   };
 });
 

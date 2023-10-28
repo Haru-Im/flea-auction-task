@@ -1,8 +1,9 @@
 import { createContext, FC, ReactNode } from 'react';
-import { SafeAreaView } from 'react-native';
+
 import { useFonts } from 'expo-font';
 import { useCallback } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export interface IFontContext {}
 
@@ -31,8 +32,10 @@ export const FontProvider: FC<FontProviderProps> = ({ children }) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      {children}
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        {children}
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };

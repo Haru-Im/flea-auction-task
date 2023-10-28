@@ -3,8 +3,9 @@ import { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import { FinishedScreen, InprogressScreen, ScheduledScreen } from './screens';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { IMainTabNavigationProp, IMainTabParamsList } from '../../tabs';
+
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import { IMainTabNavigationProp, IMainTabParamsList } from '../main';
 
 export type IMarketTabNavigationProp = CompositeNavigationProp<
   IMainTabNavigationProp,
@@ -30,7 +31,7 @@ export const MarketTab = memo<IMarketTabProps>(({ navigation }) => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        options={{ title: '진행중' }}
+        options={{ title: '진행중', swipeEnabled: false }}
         name="InprogressScreen"
         component={InprogressScreen}
       />

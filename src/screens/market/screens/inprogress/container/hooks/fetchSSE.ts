@@ -9,7 +9,9 @@ export const useFetchSSE = () => {
   const setArtPieces = useSetRecoilState($artPieces);
 
   useEffectOnceWhen(() => {
+    console.log('useEffectOnceWhen');
     const SSE_URL = process.env.EXPO_PUBLIC_SSE_AUCTION_VIEWED_URL;
+    console.log(SSE_URL);
     if (!SSE_URL) {
       throw new Error('SSE_URL is undefined.');
     }
