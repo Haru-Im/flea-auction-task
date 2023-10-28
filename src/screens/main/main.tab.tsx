@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { memo } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { NavigatorScreenParams, RouteProp } from '@react-navigation/native';
@@ -9,6 +9,11 @@ import { IHomeScreenParamList, HomeScreen } from '../home';
 import { IMarketTabParamList, MarketTab } from '../market';
 import { IMyPageScreenParamList, MyPageScreen } from '../mypage';
 import { IRootStackParamList } from '../root.stack';
+
+import { Octicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export type IMainTabNavigationProp = NativeStackNavigationProp<
   IRootStackParamList,
@@ -43,14 +48,81 @@ export const MainTab = memo<IMainTabProps>(({ navigation, route }) => {
     <Tab.Navigator
       screenOptions={{
         header: (props) => {
-          return <Text>{HEADER_NAME[props.route.name as keyof IMainTabParamsList]}</Text>;
+          return (
+            <View style={{ backgroundColor: 'white', padding: 16 }}>
+              <Text style={{ fontSize: 28, fontFamily: 'Pretendard-Bold' }}>
+                {HEADER_NAME[props.route.name as keyof IMainTabParamsList]}
+              </Text>
+            </View>
+          );
         },
+        ...tabBarTheme,
       }}
+      initialRouteName="MarketTab"
     >
-      <Tab.Screen options={{ title: 'HOME' }} name="HomeScreen" component={HomeScreen} />
-      <Tab.Screen options={{ title: 'MARKET' }} name="MarketTab" component={MarketTab} />
-      <Tab.Screen options={{ title: 'ARTICLE' }} name="ArticleScreen" component={ArticleScreen} />
-      <Tab.Screen options={{ title: 'MYPAGE' }} name="MyPageScreen" component={MyPageScreen} />
+      <Tab.Screen
+        options={{
+          title: 'HOME',
+          tabBarIcon: ({ focused }) => (
+            <Octicons name="home" size={24} color={focused ? 'black' : '#b4b4b4'} />
+          ),
+          ...tabBarStyles,
+        }}
+        name="HomeScreen"
+        component={HomeScreen}
+      />
+      <Tab.Screen
+        options={{
+          title: 'MARKET',
+          tabBarIcon: ({ focused }) => (
+            <AntDesign name="shoppingcart" size={26} color={focused ? 'black' : '#b4b4b4'} />
+          ),
+          ...tabBarStyles,
+        }}
+        name="MarketTab"
+        component={MarketTab}
+      />
+      <Tab.Screen
+        options={{
+          title: 'ARTICLE',
+          tabBarIcon: ({ focused }) => (
+            <FontAwesome5 name="newspaper" size={24} color={focused ? 'black' : '#b4b4b4'} />
+          ),
+          ...tabBarStyles,
+        }}
+        name="ArticleScreen"
+        component={ArticleScreen}
+      />
+      <Tab.Screen
+        options={{
+          title: 'MYPAGE',
+          tabBarIcon: ({ focused }) => (
+            <MaterialCommunityIcons
+              name="face-man-outline"
+              size={24}
+              color={focused ? 'black' : '#b4b4b4'}
+            />
+          ),
+          ...tabBarStyles,
+        }}
+        name="MyPageScreen"
+        component={MyPageScreen}
+      />
     </Tab.Navigator>
   );
 });
+
+const tabBarStyles = {
+  tabBarInactiveTintColor: '#b4b4b4',
+  tabBarActiveTintColor: 'black',
+  tabBarLabelStyle: { fontFamily: 'Pretendard-Bold', fontSize: 12 },
+};
+
+const tabBarTheme = {
+  tabBarStyle: {
+    height: 85,
+    paddingTop: 10,
+    borderTopStartRadius: 24,
+    borderTopEndRadius: 24,
+  },
+};

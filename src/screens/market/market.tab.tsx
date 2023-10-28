@@ -1,6 +1,5 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { memo } from 'react';
-import { StyleSheet } from 'react-native';
 import { FinishedScreen, InprogressScreen, ScheduledScreen } from './screens';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -29,9 +28,20 @@ const Tab = createMaterialTopTabNavigator<IMarketTabParamList>();
 
 export const MarketTab = memo<IMarketTabProps>(({ navigation }) => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarItemStyle: {
+          width: 'auto',
+          paddingHorizontal: 0,
+        },
+        ...tabBarLabelStyle,
+      }}
+    >
       <Tab.Screen
-        options={{ title: '진행중', swipeEnabled: false }}
+        options={{
+          title: '진행중',
+          swipeEnabled: false,
+        }}
         name="InprogressScreen"
         component={InprogressScreen}
       />
@@ -49,6 +59,20 @@ export const MarketTab = memo<IMarketTabProps>(({ navigation }) => {
   );
 });
 
-const styles = StyleSheet.create({
-  container: {},
-});
+const tabBarLabelStyle = {
+  tabBarLabelStyle: {
+    fontFamily: 'Pretendard-SemiBold',
+    fontSize: 22,
+    marginHorizontal: 0,
+  },
+  tabBarGap: 16,
+  tabBarStyle: {
+    paddingLeft: 16,
+  },
+  tabBarIndicatorContainerStyle: {
+    marginLeft: 16,
+  },
+  tabBarIndicatorStyle: { backgroundColor: 'black', height: 3 },
+  tabBarInactiveTintColor: '#b4b4b4',
+  tabBarActiveTintColor: 'black',
+};

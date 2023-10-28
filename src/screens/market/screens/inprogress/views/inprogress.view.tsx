@@ -40,5 +40,5 @@ export const InprogressView = memo<IInprogressViewProps>(
 );
 
 const styles = StyleSheet.create({
-  contentContainer: { flex: 1, paddingTop: 24, paddingHorizontal: 16 },
+  contentContainer: { flex: 1, backgroundColor: 'white' },
 });
