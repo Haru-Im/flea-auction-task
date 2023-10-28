@@ -19,7 +19,7 @@
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "lodash": "4.17.21",
-    "lottie-react-native": "6.3.1",
+    "lottie-react-native": "5.1.6",
     "react": "18.2.0",
     "react-native": "0.72.6",
     "react-native-fast-image": "8.6.3",
@@ -31,6 +31,7 @@
     "react-native-sse": "1.2.0",
     "react-native-svg": "13.9.0",
     "react-native-tab-view": "3.5.2",
+    "react-native-toast-notifications": "3.4.0",
     "recoil": "0.7.7",
     "rooks": "7.14.1",
     "typescript": "^5.1.3"

@@ -2,7 +2,9 @@ import React, { RefObject, memo } from 'react';
 import { View, ScrollView, Text, StyleSheet, Dimensions } from 'react-native';
 import { IArtPiecesType } from '../inprogress.type';
 import Animated from 'react-native-reanimated';
-import { ProfileSvgComponent } from './profile-svg.component';
+
+import {} from 'react-native-responsive-fontsize';
+import { ProfileSvgComponent, scaleSize } from '../../../../../shared';
 
 type IHorizontalScrollPiecesComponentProps = {
   piecesArray: IArtPiecesType;
@@ -47,13 +49,14 @@ export const HorizontalScrollPiecesComponent = memo<IHorizontalScrollPiecesCompo
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 48,
-    paddingHorizontal: 8,
+    paddingTop: scaleSize(48),
+    paddingBottom: scaleSize(24),
+    paddingHorizontal: scaleSize(8),
   },
   box: {
-    padding: 18,
+    padding: scaleSize(18),
     width: SCREEN_WIDTH / 2,
-    marginHorizontal: 10,
+    marginHorizontal: scaleSize(10),
     borderRadius: 8,
     shadowColor: '#000000',
     shadowOpacity: 0.27,
@@ -69,23 +72,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#24d6c4',
     width: '100%',
-    height: 100,
+    paddingVertical: 0,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 6,
-    gap: 8,
+    gap: scaleSize(8),
   },
   profileWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    paddingTop: 16,
-    paddingBottom: 8,
+    gap: scaleSize(8),
+    paddingTop: scaleSize(16),
+    paddingBottom: scaleSize(8),
   },
-  auctionIdText: { fontFamily: 'Pretendard-Medium', fontSize: 16 },
-  viewCountText: { fontSize: 20, fontFamily: 'Pretendard-Bold' },
-  descriptionBox: { flex: 1.5, gap: 8 },
-  authorText: { fontFamily: 'Pretendard-SemiBold', color: '#727272', fontSize: 14 },
-  titleText: { fontFamily: 'Pretendard-Regular', fontSize: 16.5 },
-  priceText: { fontFamily: 'Pretendard-Bold', color: '#161616', fontSize: 20 },
+  auctionIdText: { fontFamily: 'Pretendard-Medium', fontSize: scaleSize(16) },
+  viewCountText: { fontSize: scaleSize(20), fontFamily: 'Pretendard-Bold' },
+  descriptionBox: { flex: 1, gap: scaleSize(8) },
+  authorText: { fontFamily: 'Pretendard-SemiBold', color: '#727272', fontSize: scaleSize(14) },
+  titleText: { fontFamily: 'Pretendard-Regular', fontSize: scaleSize(16.5) },
+  priceText: { fontFamily: 'Pretendard-Bold', color: '#161616', fontSize: scaleSize(20) },
 });

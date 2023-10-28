@@ -5,6 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 import { IMainTabNavigationProp, IMainTabParamsList } from '../main';
+import { scaleSize } from '../../shared';
 
 export type IMarketTabNavigationProp = CompositeNavigationProp<
   IMainTabNavigationProp,
@@ -62,7 +63,7 @@ export const MarketTab = memo<IMarketTabProps>(({ navigation }) => {
 const tabBarLabelStyle = {
   tabBarLabelStyle: {
     fontFamily: 'Pretendard-SemiBold',
-    fontSize: 22,
+    fontSize: scaleSize(22),
     marginHorizontal: 0,
   },
   tabBarGap: 16,

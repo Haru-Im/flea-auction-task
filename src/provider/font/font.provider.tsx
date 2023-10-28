@@ -1,13 +1,8 @@
-import { createContext, FC, ReactNode } from 'react';
-
+import { FC, ReactNode } from 'react';
 import { useFonts } from 'expo-font';
 import { useCallback } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-
-export interface IFontContext {}
-
-export const FontContext = createContext<IFontContext | null>(null);
 
 type FontProviderProps = {
   children: ReactNode;

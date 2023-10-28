@@ -14,6 +14,7 @@ import { Octicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { scaleSize } from '../../shared';
 
 export type IMainTabNavigationProp = NativeStackNavigationProp<
   IRootStackParamList,
@@ -49,8 +50,8 @@ export const MainTab = memo<IMainTabProps>(({ navigation, route }) => {
       screenOptions={{
         header: (props) => {
           return (
-            <View style={{ backgroundColor: 'white', padding: 16 }}>
-              <Text style={{ fontSize: 28, fontFamily: 'Pretendard-Bold' }}>
+            <View style={{ backgroundColor: 'white', padding: scaleSize(16) }}>
+              <Text style={{ fontSize: scaleSize(28), fontFamily: 'Pretendard-Bold' }}>
                 {HEADER_NAME[props.route.name as keyof IMainTabParamsList]}
               </Text>
             </View>
@@ -64,7 +65,7 @@ export const MainTab = memo<IMainTabProps>(({ navigation, route }) => {
         options={{
           title: 'HOME',
           tabBarIcon: ({ focused }) => (
-            <Octicons name="home" size={24} color={focused ? 'black' : '#b4b4b4'} />
+            <Octicons name="home" size={scaleSize(24)} color={focused ? 'black' : '#b4b4b4'} />
           ),
           ...tabBarStyles,
         }}
@@ -75,7 +76,11 @@ export const MainTab = memo<IMainTabProps>(({ navigation, route }) => {
         options={{
           title: 'MARKET',
           tabBarIcon: ({ focused }) => (
-            <AntDesign name="shoppingcart" size={26} color={focused ? 'black' : '#b4b4b4'} />
+            <AntDesign
+              name="shoppingcart"
+              size={scaleSize(26)}
+              color={focused ? 'black' : '#b4b4b4'}
+            />
           ),
           ...tabBarStyles,
         }}
@@ -86,7 +91,11 @@ export const MainTab = memo<IMainTabProps>(({ navigation, route }) => {
         options={{
           title: 'ARTICLE',
           tabBarIcon: ({ focused }) => (
-            <FontAwesome5 name="newspaper" size={24} color={focused ? 'black' : '#b4b4b4'} />
+            <FontAwesome5
+              name="newspaper"
+              size={scaleSize(24)}
+              color={focused ? 'black' : '#b4b4b4'}
+            />
           ),
           ...tabBarStyles,
         }}
@@ -99,7 +108,7 @@ export const MainTab = memo<IMainTabProps>(({ navigation, route }) => {
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name="face-man-outline"
-              size={24}
+              size={scaleSize(24)}
               color={focused ? 'black' : '#b4b4b4'}
             />
           ),
@@ -120,9 +129,9 @@ const tabBarStyles = {
 
 const tabBarTheme = {
   tabBarStyle: {
-    height: 85,
-    paddingTop: 10,
-    borderTopStartRadius: 24,
-    borderTopEndRadius: 24,
+    height: scaleSize(85),
+    paddingTop: scaleSize(10),
+    borderTopStartRadius: scaleSize(24),
+    borderTopEndRadius: scaleSize(24),
   },
 };
