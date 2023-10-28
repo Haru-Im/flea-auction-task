@@ -1,14 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native';
-
-import { SafeAreaView } from 'react-native';
 import { RootStack } from './src/screens/root.stack';
+import { FontProvider } from './src';
 
 export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <FontProvider>
       <NavigationContainer>
         <RootStack />
       </NavigationContainer>
-    </SafeAreaView>
+    </FontProvider>
   );
 }
