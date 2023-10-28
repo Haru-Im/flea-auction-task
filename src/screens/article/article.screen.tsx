@@ -1,8 +1,9 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { memo } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { IMainTabParamsList } from '../../tabs';
+
 import { RouteProp } from '@react-navigation/native';
+import { IMainTabParamsList } from '../main';
+import { PreparingScreenComponent } from '../../shared';
 
 export type IArticleScreenParamList = {};
 
@@ -19,13 +20,5 @@ type IArticleScreenProps = {
 };
 
 export const ArticleScreen = memo<IArticleScreenProps>(({}) => {
-  return (
-    <View style={styles.container}>
-      <Text>article</Text>
-    </View>
-  );
-});
-
-const styles = StyleSheet.create({
-  container: {},
+  return <PreparingScreenComponent />;
 });

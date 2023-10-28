@@ -1,8 +1,8 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { memo } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
 import { IMarketTabParamList } from '../../market.tab';
 import { RouteProp } from '@react-navigation/native';
+import { PreparingScreenComponent } from '../../../../shared';
 
 export type IFinishedScreenNavigationProp = NativeStackNavigationProp<
   IMarketTabParamList,
@@ -17,13 +17,5 @@ type IFinishedScreenProps = {
 };
 
 export const FinishedScreen = memo<IFinishedScreenProps>(({}) => {
-  return (
-    <View style={styles.container}>
-      <Text>finished</Text>
-    </View>
-  );
-});
-
-const styles = StyleSheet.create({
-  container: {},
+  return <PreparingScreenComponent />;
 });

@@ -1,8 +1,8 @@
-import { View, Text } from 'react-native';
-import { IMainTabParamsList } from '../../tabs';
 import { memo } from 'react';
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { IMainTabParamsList } from '../main';
+import { PreparingScreenComponent } from '../../shared';
 
 export type IHomeScreenParamList = {};
 
@@ -18,10 +18,6 @@ type IHomeScreenProps = {
   route: IHomeScreenRouteProp;
 };
 
-export const HomeScreen = memo<IHomeScreenProps>(({ navigation, route }) => {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
+export const HomeScreen = memo<IHomeScreenProps>(() => {
+  return <PreparingScreenComponent />;
 });

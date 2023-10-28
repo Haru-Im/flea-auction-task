@@ -1,8 +1,9 @@
 import { memo } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { IMainTabNavigationProp, IMainTabParamsList } from '../../tabs';
+
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { IMainTabNavigationProp, IMainTabParamsList } from '../main';
+import { PreparingScreenComponent } from '../../shared';
 
 export type IMyPageScreenParamList = {};
 
@@ -18,14 +19,6 @@ type IMyPageScreenProps = {
   route: IMyPageScreenRouteProp;
 };
 
-export const MyPageScreen = memo<IMyPageScreenProps>(({ navigation, route }) => {
-  return (
-    <View style={styles.container}>
-      <Text>MyPage</Text>
-    </View>
-  );
-});
-
-const styles = StyleSheet.create({
-  container: {},
+export const MyPageScreen = memo<IMyPageScreenProps>(() => {
+  return <PreparingScreenComponent />;
 });
