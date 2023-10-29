@@ -1,10 +1,11 @@
 import EventSource from 'react-native-sse';
 import { useSetRecoilState } from 'recoil';
 import { $artPieces } from '../../inprogress.state';
-import { useDidUpdate, useEffectOnceWhen } from 'rooks';
-import { useState } from 'react';
+import { useDidUpdate } from 'rooks';
+import { useCallback, useState } from 'react';
 import { useToast } from 'react-native-toast-notifications';
 import * as Haptics from 'expo-haptics';
+import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 
 type MyCustomEvents = 'sse.auction_viewed';
 
@@ -16,22 +17,17 @@ export const useFetchSSE = () => {
     viewCount: 0,
   });
 
-  useDidUpdate(() => {
-    toast.show(`ID ${currentData.auctionId} is clicked!`, {
-      type: 'viewed_toast',
-    });
-  }, [currentData.viewCount]);
+  const SSE_URL = process.env.EXPO_PUBLIC_SSE_AUCTION_VIEWED_URL;
+  const eventSource = new EventSource<MyCustomEvents>(SSE_URL as string);
 
-  useEffectOnceWhen(() => {
-    const SSE_URL = process.env.EXPO_PUBLIC_SSE_AUCTION_VIEWED_URL;
+  const isFocused = useIsFocused();
 
+  const handleSSEConnection = useCallback(() => {
     if (!SSE_URL) {
       throw new Error('SSE_URL is undefined.');
     }
 
-    const eventSource = new EventSource<MyCustomEvents>(SSE_URL);
-
-    eventSource.addEventListener('open', (event) => {
+    eventSource.addEventListener('open', () => {
       console.log('Open SSE connection.');
     });
 
@@ -66,8 +62,21 @@ export const useFetchSSE = () => {
       }
     });
 
-    eventSource.addEventListener('close', (event) => {
+    eventSource.addEventListener('close', () => {
       console.log('Close SSE connection.');
     });
-  });
+
+    return () => {
+      eventSource.close();
+      eventSource.removeAllEventListeners();
+    };
+  }, [isFocused]);
+
+  useFocusEffect(handleSSEConnection);
+
+  useDidUpdate(() => {
+    toast.show(`ID ${currentData.auctionId} is clicked!`, {
+      type: 'viewed_toast',
+    });
+  }, [currentData.viewCount]);
 };
