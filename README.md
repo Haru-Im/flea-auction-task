@@ -48,17 +48,17 @@ i
 <tr>
 <td>
 
-<img src="https://res.cloudinary.com/dy5pujkzs/image/upload/v1698575131/%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A6%E1%84%89%E1%85%B5%E1%84%92%E1%85%A7%E1%86%AB_qegcv4.gif" alt="과제 시현" width="250" height="250">
+<img src="https://res.cloudinary.com/dy5pujkzs/image/upload/v1698576215/%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A6%E1%84%89%E1%85%B5%E1%84%92%E1%85%A7%E1%86%AB2_yunql0.gif" alt="과제 시현" width="300" height="auto">
 
 </td>
 <td>
 
-<img src="https://res.cloudinary.com/dy5pujkzs/image/upload/v1698575131/%E1%84%92%E1%85%A9%E1%86%B7%E1%84%89%E1%85%A1%E1%84%8C%E1%85%B5%E1%86%AB_qfqudi.gif" alt="홈 Tab" width="250" height="250">
+<img src="https://res.cloudinary.com/dy5pujkzs/image/upload/v1698576281/%E1%84%92%E1%85%A9%E1%86%B72_fvo9yr.gif" alt="홈 Tab" width="300" height="auto">
 
 </td>
 <td>
 
-<img src="https://res.cloudinary.com/dy5pujkzs/image/upload/v1698575131/%E1%84%8C%E1%85%AE%E1%86%AB%E1%84%87%E1%85%B5%E1%84%8C%E1%85%AE%E1%86%BC_v6zbu5.gif" alt="준비중 화면" width="250" height="250">
+<img src="https://res.cloudinary.com/dy5pujkzs/image/upload/v1698575131/%E1%84%8C%E1%85%AE%E1%86%AB%E1%84%87%E1%85%B5%E1%84%8C%E1%85%AE%E1%86%BC_v6zbu5.gif" alt="준비중 화면" width="300" height="auto">
 
 </td>
 </tr>
