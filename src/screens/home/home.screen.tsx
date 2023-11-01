@@ -8,7 +8,9 @@ import { catData } from './home.const';
 import { IItem, ImageCardComponent, ImageSkeletonComponent } from './components';
 import shuffle from 'lodash/shuffle';
 
-export type IHomeScreenParamList = {};
+export type IHomeScreenParamList = {
+  auctionId: number;
+};
 
 export type IHomeScreenNavigationProp = NativeStackNavigationProp<
   IMainTabParamsList,
@@ -22,7 +24,7 @@ type IHomeScreenProps = {
   route: IHomeScreenRouteProp;
 };
 
-export const HomeScreen = memo<IHomeScreenProps>(() => {
+export const HomeScreen = memo<IHomeScreenProps>(({ route }) => {
   const [shuffledCatData, setShuffledCatData] = useState(catData);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

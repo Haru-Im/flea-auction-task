@@ -1,5 +1,3 @@
-import { Image } from 'expo-image';
-
 export const CAT_URL_ARRAY = [
   'https://res.cloudinary.com/dy5pujkzs/image/upload/v1698399324/cat/IMG_7218_abtejp.heic',
   'https://res.cloudinary.com/dy5pujkzs/image/upload/v1698399325/cat/IMG_4362_nbpndm.jpg',
@@ -47,7 +45,6 @@ export const CAT_URL_ARRAY = [
 ];
 
 export const catData = CAT_URL_ARRAY.map((e, i) => {
-  Image.prefetch(e);
   return {
     id: String(i),
     imageUrl: e,

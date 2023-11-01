@@ -1,8 +1,10 @@
 import React, { RefObject, memo } from 'react';
-import { View, ScrollView, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 import { IArtPiecesType } from '../inprogress.type';
 import Animated from 'react-native-reanimated';
 import { ProfileSvgComponent, scaleSize } from '../../../../../shared';
+import { useNavigation } from '@react-navigation/native';
+import { IInprogressScreenNavigationProp } from '../inprogress.screen';
 
 type IHorizontalScrollPiecesComponentProps = {
   piecesArray: IArtPiecesType;
@@ -13,6 +15,8 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 export const HorizontalScrollPiecesComponent = memo<IHorizontalScrollPiecesComponentProps>(
   ({ piecesArray = [], scrollViewRef }) => {
+    const navigation = useNavigation<IInprogressScreenNavigationProp>();
+
     return (
       <ScrollView
         ref={scrollViewRef}
@@ -21,22 +25,29 @@ export const HorizontalScrollPiecesComponent = memo<IHorizontalScrollPiecesCompo
         contentContainerStyle={styles.container}
       >
         {piecesArray.map((e, i) => {
+          const handlePressCard = () => {
+            navigation.navigate('ScheduledScreen', {
+              auctionId: e.auctionId,
+            });
+          };
           return (
             <View key={i} style={styles.box}>
-              <View style={styles.itemBox}>
-                <Text style={styles.auctionIdText}>{`작품ID (${e.auctionId})`}</Text>
-                <Animated.Text style={styles.viewCountText}>{e.viewCount ?? 'n/a'}</Animated.Text>
-              </View>
-              <View style={styles.descriptionBox}>
-                <View style={styles.profileWrapper}>
-                  <ProfileSvgComponent />
-                  <Text style={styles.authorText}>{e.author}</Text>
+              <Pressable key={i} onPress={handlePressCard} style={{ flex: 1 }}>
+                <View style={styles.itemBox}>
+                  <Text style={styles.auctionIdText}>{`작품ID (${e.auctionId})`}</Text>
+                  <Animated.Text style={styles.viewCountText}>{e.viewCount ?? 'n/a'}</Animated.Text>
                 </View>
-                <Text numberOfLines={1} style={styles.titleText}>
-                  {e.title}
-                </Text>
-                <Text style={styles.priceText}>{e.price}</Text>
-              </View>
+                <View style={styles.descriptionBox}>
+                  <View style={styles.profileWrapper}>
+                    <ProfileSvgComponent />
+                    <Text style={styles.authorText}>{e.author}</Text>
+                  </View>
+                  <Text numberOfLines={1} style={styles.titleText}>
+                    {e.title}
+                  </Text>
+                  <Text style={styles.priceText}>{e.price}</Text>
+                </View>
+              </Pressable>
             </View>
           );
         })}

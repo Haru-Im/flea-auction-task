@@ -1,6 +1,6 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { memo } from 'react';
-import { FinishedScreen, InprogressScreen, ScheduledScreen } from './screens';
+import { FinishedScreen, IScheduledParamsList, InprogressScreen, ScheduledScreen } from './screens';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
@@ -21,7 +21,7 @@ type IMarketTabProps = {
 
 export type IMarketTabParamList = {
   InprogressScreen: undefined;
-  ScheduledScreen: undefined;
+  ScheduledScreen: IScheduledParamsList;
   FinishedScreen: undefined;
 };
 

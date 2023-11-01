@@ -4,11 +4,16 @@ import { IMarketTabParamList } from '../../market.tab';
 import { RouteProp } from '@react-navigation/native';
 import { PreparingScreenComponent } from '../../../../shared';
 
+export type IScheduledParamsList = {
+  auctionId: number;
+};
+
 export type IScheduledScreenNavigationProp = NativeStackNavigationProp<
   IMarketTabParamList,
   'ScheduledScreen',
   undefined
 >;
+
 export type IScheduledScreenRouteProp = RouteProp<IMarketTabParamList, 'ScheduledScreen'>;
 
 type IScheduledScreenProps = {
@@ -16,6 +21,6 @@ type IScheduledScreenProps = {
   route: IScheduledScreenRouteProp;
 };
 
-export const ScheduledScreen = memo<IScheduledScreenProps>(({}) => {
+export const ScheduledScreen = memo<IScheduledScreenProps>(({ navigation, route }) => {
   return <PreparingScreenComponent />;
 });

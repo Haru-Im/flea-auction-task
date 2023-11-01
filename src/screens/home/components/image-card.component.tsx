@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Image } from 'expo-image';
+import { Image } from 'react-native-expo-image-cache';
 
 export type IImageCardComponentProps = {
   item: IItem;
@@ -17,7 +17,7 @@ export const ImageCardComponent = memo<IImageCardComponentProps>(({ item }) => {
   return (
     <View style={styles.container}>
       <View style={[{ height: randomBool ? 150 : 250 }, styles.box]}>
-        <Image source={item.imageUrl} style={styles.image} />
+        <Image uri={item.imageUrl} style={styles.image} />
       </View>
     </View>
   );

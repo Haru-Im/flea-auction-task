@@ -5,6 +5,10 @@ import { RouteProp } from '@react-navigation/native';
 import { InprogressContainer } from './container';
 import { RecoilProvider } from '../../../../provider';
 
+export type IInprogressParamsList = {
+  auctionId: number;
+};
+
 export type IInprogressScreenNavigationProp = NativeStackNavigationProp<
   IMarketTabParamList,
   'InprogressScreen',

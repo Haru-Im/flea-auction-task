@@ -19,6 +19,6 @@ type IMyPageScreenProps = {
   route: IMyPageScreenRouteProp;
 };
 
-export const MyPageScreen = memo<IMyPageScreenProps>(() => {
+export const MyPageScreen = memo<IMyPageScreenProps>(({ navigation }) => {
   return <PreparingScreenComponent />;
 });
